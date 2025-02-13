@@ -65,7 +65,7 @@ class ThumbnailDownloader<in T>(private val responseHandler: Handler,
 
     private fun handleRequest(target: T) {
         val url = requestMap[target] ?: return
-        val bitmap = flickrFetchr.fetchPhotos(url) ?: return
+        val bitmap = flickrFetchr.fetchPhoto(url) ?: return
 
         responseHandler.post(kotlinx.coroutines.Runnable {
             if (requestMap[target] != url || hadQuit){
