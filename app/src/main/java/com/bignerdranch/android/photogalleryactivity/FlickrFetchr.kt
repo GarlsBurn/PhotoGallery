@@ -42,11 +42,11 @@ class FlickrFetchr {
     }
 
     fun fetchPhotos(): LiveData<List<GalleryItem>>{
-        return fetchPhotoMetadata(flickrApi.fetchPhotos())
+        return fetchPhotoMetadata(fetchPhotosRequest())
     }
 
     fun searchPhoto(query: String): LiveData<List<GalleryItem>>{
-        return fetchPhotoMetadata(flickrApi.searchPhotos(query))
+        return fetchPhotoMetadata(searchPhotosRequest(query))
     }
 
      private fun fetchPhotoMetadata(flickrRequest: Call<FlickrResponse>)
@@ -81,5 +81,13 @@ class FlickrFetchr {
         val bitmap = response.body()?.byteStream()?.use(BitmapFactory::decodeStream)
         Log.i(TAG, "Decoded bitmap=$bitmap from Response=$response")
         return bitmap
+    }
+
+    fun fetchPhotosRequest():Call<FlickrResponse>{
+        return flickrApi.fetchPhotos()
+    }
+
+    fun searchPhotosRequest(query: String): Call<FlickrResponse>{
+        return flickrApi.searchPhotos(query)
     }
 }

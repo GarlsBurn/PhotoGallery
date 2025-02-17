@@ -47,10 +47,19 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation("androidx.recyclerview:recyclerview:1.4.0")
-    implementation("com.squareup.retrofit2:retrofit:2.5.0")
-    implementation ("com.squareup.retrofit2:converter-scalars:2.5.0")
-    implementation ("com.google.code.gson:gson:2.8.5")
-    implementation ("com.squareup.retrofit2:converter-gson:2.4.0")
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+
+    // Retrofit (все одной версии)
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // Gson (новая версия)
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    // Жизненный цикл (удаляем устаревшую `lifecycle-extensions`)
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+
+    // WorkManager (замена `android.arch.work` на `androidx.work`)
+    implementation("androidx.work:work-runtime:2.9.0")
 }
