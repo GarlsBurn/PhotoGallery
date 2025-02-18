@@ -18,7 +18,7 @@ object QueryPreferences {
         }
 
     fun setPolling(context: Context, isOn: Boolean){
-        PreferenceManager.getDefaultSharedPreferences().edit{
+        PreferenceManager.getDefaultSharedPreferences(context).edit{
             putBoolean(PREF_IS_POLLING, isOn)
         }
     }
